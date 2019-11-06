@@ -1,0 +1,40 @@
+[System]
+Name='fis_tiprestaurant'
+Type='mamdani'
+Version=2.0
+NumInputs=2
+NumOutputs=1
+NumRules=3
+AndMethod='min'
+OrMethod='max'
+ImpMethod='min'
+AggMethod='max'
+DefuzzMethod='centroid'
+
+[Input1]
+Name='pelayanan'
+Range=[0 10]
+NumMFs=3
+MF1='jelek':'trimf',[-4 0 4]
+MF2='sedang':'trimf',[1 5 9]
+MF3='bagus':'trimf',[6 10 14]
+
+[Input2]
+Name='makanan'
+Range=[0 10]
+NumMFs=2
+MF1='tidakenak':'trapmf',[0 0 1.2 2.8]
+MF2='enak':'trapmf',[7 9 10 10]
+
+[Output1]
+Name='tip'
+Range=[0 30]
+NumMFs=3
+MF1='murah':'trimf',[0 5 10]
+MF2='standart':'trimf',[10 15 20]
+MF3='mahal':'trimf',[20 25 30]
+
+[Rules]
+1 1, 1 (1) : 1
+2 0, 2 (1) : 1
+3 2, 3 (1) : 1
